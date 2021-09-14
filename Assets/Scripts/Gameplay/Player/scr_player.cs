@@ -13,6 +13,7 @@ public class scr_player : MonoBehaviour
     public GameObject playButton;
     public GameObject allTimeScoreText;
     public Rigidbody playerRB;
+    public GameObject blurPanel;
 
     public bool isAlive;
     public bool isPaused;
@@ -85,6 +86,10 @@ public class scr_player : MonoBehaviour
     public void pauseGame()
     {
         playButton.SetActive(true);
+        blurPanel.SetActive(true);
+        highScoreText.SetActive(false);
+        allTimeScoreText.SetActive(false);
+        livesText.SetActive(false);
 
         Time.timeScale = 0;
         isPaused = true;
@@ -93,6 +98,10 @@ public class scr_player : MonoBehaviour
     public void resumeGame()
     {
         playButton.SetActive(false);
+        blurPanel.SetActive(false);
+        highScoreText.SetActive(true);
+        allTimeScoreText.SetActive(true);
+        livesText.SetActive(true);
 
         Time.timeScale = 1;
         isPaused = false;
@@ -131,6 +140,7 @@ public class scr_player : MonoBehaviour
         allTimeScoreText.GetComponent<TMPro.TextMeshProUGUI>().text = "High Score: " + allTimeScore;
         highScoreText.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + highScore;
         livesText.GetComponent<TMPro.TextMeshProUGUI>().text = "Lives: " + currentLives;
+
 
         if (Input.GetKey("w"))
         {
