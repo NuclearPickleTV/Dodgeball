@@ -12,6 +12,7 @@ public class scr_player : MonoBehaviour
     public GameObject livesText;
     public GameObject playButton;
     public GameObject allTimeScoreText;
+    public Rigidbody playerRB;
 
     public bool isAlive;
     public bool isPaused;
@@ -21,6 +22,7 @@ public class scr_player : MonoBehaviour
 
     public int highScore;
     public int allTimeScore;
+
     int currentLives;
     //bool isGrounded;
     Vector3 jump;
@@ -156,7 +158,7 @@ public class scr_player : MonoBehaviour
         }
 
         movementVector = Vector3.ClampMagnitude(movementVector, 1f) * movementSpeed;
-        transform.position += movementVector * Time.deltaTime;
+        playerRB.position += movementVector * Time.deltaTime;
 
         /*if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
